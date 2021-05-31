@@ -66,7 +66,7 @@ func (s *Session) Plan() (Result, error) {
 			changes = result.Stdout()
 		} else {
 			rawPlanOutput := process.Stdout().String()
-			var re = regexp.MustCompile(`(?s)Terraform will perform the following actions:(.*)-{72}`)
+			var re = regexp.MustCompile(`(?s)Terraform will perform the following actions:(.*)(?:─{77}|-{72})`)
 			if match := re.FindStringSubmatch(rawPlanOutput); len(match) == 2 {
 				changes = match[1]
 			} else {
